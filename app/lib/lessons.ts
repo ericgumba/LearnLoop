@@ -28,7 +28,12 @@ export const lessons: Record<LessonKey, LessonContent> = {
         label: "hello world",
         topic: "Lesson: Hello World in C++",
         explanation: "In C++, main() is the entry point of the program.",
-        example: "std::cout prints text to the console.",
+        example: `#include <iostream>
+
+int main() {
+  std::cout << "Hello, world!" << std::endl;
+  return 0;
+}`,
         assignment: "Try changing the message and then run the code.",
         starterCode: `#include <iostream>
 
@@ -42,18 +47,21 @@ int main() {
         label: "pointers",
         topic: "Lesson: Pointers in C++",
         explanation: "A pointer stores the memory address of another variable.",
-        example:
-          "Use * to dereference a pointer and & to get an address, e.g. int* p = &value;.",
+        example: `#include <iostream>
+
+int main() {
+    int x = 42;
+    int* ptr = &x;
+
+    std::cout << "Value: " << *ptr << std::endl;
+    std::cout << "Address: " << ptr << std::endl;
+
+    return 0;
+}`,
         assignment: "Create a pointer to an int, then print both the value and its address.",
         starterCode: `#include <iostream>
 
 int main() {
-  int value = 42;
-  int* ptr = &value;
-
-  std::cout << "value: " << value << std::endl;
-  std::cout << "address: " << ptr << std::endl;
-  std::cout << "dereference: " << *ptr << std::endl;
   return 0;
 }`,
       },
@@ -69,7 +77,8 @@ int main() {
         label: "hello world",
         topic: "Lesson: Hello World in Haskell",
         explanation: "In Haskell, execution starts in the main function.",
-        example: "putStrLn prints text followed by a newline.",
+        example: `main :: IO ()
+main = putStrLn "Hello, world!"`,
         assignment: "Change the message and evaluate the expression.",
         starterCode: `main :: IO ()
 main = putStrLn "Hello, world!"`,

@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-black">
       <main className="w-full max-w-5xl p-6">
         <section className="rounded-xl border border-zinc-200 bg-white p-6 shadow dark:border-zinc-700 dark:bg-zinc-900">
-          <h1 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-white">Choose a Lesson</h1>
+          <h1 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-white">Choose a language</h1>
           <div className="grid gap-4 sm:grid-cols-2">
             {lessonList.map((lesson) => (
               <Link

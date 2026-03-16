@@ -53,7 +53,12 @@ export default function LessonWorkspace({ lesson }: LessonWorkspaceProps) {
           example={selectedTopic.example}
           assignment={selectedTopic.assignment}
         />
-        <CodeEditor language={lesson.editorLanguage} starterCode={selectedTopic.starterCode} />
+        <CodeEditor
+          key={selectedTopic.slug}
+          language={lesson.editorLanguage}
+          starterCode={selectedTopic.starterCode}
+          assignment={selectedTopic.assignment}
+        />
       </div>
     </div>
   );
