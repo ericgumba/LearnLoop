@@ -1,20 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 
 type CodeEditorProps = {
   language: string;
   starterCode: string;
   assignment: string;
+  draftKey: string;
 };
 
-export default function CodeEditor({ language, starterCode, assignment }: CodeEditorProps) {
-  const [code, setCode] = useState(starterCode);
+export default function CodeEditor({ language, starterCode, assignment, draftKey }: CodeEditorProps) {
+  const storageKey = `draft:${draftKey}`;
+  const [code, setCode] = useState(() => {
+    if (typeof window === "undefined") {
+      return starterCode;
+    }
+
+    const savedCode = window.localStorage.getItem(storageKey);
+    return savedCode ?? starterCode;
+  });
   const [output, setOutput] = useState("");
   const [feedback, setFeedback] = useState("");
 
-  console.log("CodeEditor rendered with language:", language);
+  useEffect(() => {
+    window.localStorage.setItem(storageKey, code);
+  }, [code, storageKey]);
 
   const runCode = async () => {
     const response = await fetch(`/api/run/${language}`, {

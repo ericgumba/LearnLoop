@@ -3,11 +3,10 @@ Run Code Button
     Execute the code
     send stdout back to client
 
+Add a get LLM feedback button
 
 todo:
-
-Add a get LLM feedback button
-    Implement an agent that 
+ 
 Run Code Button PREVENT:
     infinite loops
     memory abuse

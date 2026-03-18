@@ -1,23 +1,20 @@
-import { NextResponse } from "next/server"
-import { exec } from "child_process"
-import fs from "fs"
+import { NextResponse } from "next/server";
+import { exec } from "child_process";
+import fs from "fs";
 
-export async function POST(req: Request) {
-  const body = await req.json()
-  const code = body.code
+export async function POST(req: Request): Promise<Response> {
+  const body = await req.json();
+  const code = body.code;
 
-  fs.writeFileSync("/tmp/main.cpp", code)
+  fs.writeFileSync("/tmp/main.cpp", code);
 
-  return new Promise((resolve) => {
-    exec(
-      "g++ /tmp/main.cpp -o /tmp/a.out && /tmp/a.out",
-      (err, stdout, stderr) => {
-        resolve(
-          NextResponse.json({
-            output: err ? stderr : stdout
-          })
-        )
-      }
-    )
-  })
+  return new Promise<Response>((resolve) => {
+    exec("g++ /tmp/main.cpp -o /tmp/a.out && /tmp/a.out", (err, stdout, stderr) => {
+      resolve(
+        NextResponse.json({
+          output: err ? stderr : stdout,
+        }),
+      );
+    });
+  });
 }
