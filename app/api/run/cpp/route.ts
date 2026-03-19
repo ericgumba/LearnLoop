@@ -9,7 +9,7 @@ export async function POST(req: Request): Promise<Response> {
   fs.writeFileSync("/tmp/main.cpp", code);
 
   return new Promise<Response>((resolve) => {
-    exec("g++ /tmp/main.cpp -o /tmp/a.out && /tmp/a.out", (err, stdout, stderr) => {
+    exec("g++ -std=c++20 -pthread /tmp/main.cpp -o /tmp/a.out && /tmp/a.out", (err, stdout, stderr) => {
       resolve(
         NextResponse.json({
           output: err ? stderr : stdout,
