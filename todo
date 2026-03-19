@@ -5,8 +5,10 @@ Run Code Button
 
 Add a get LLM feedback button
 
+add a top banner component that allows users to login / register and have fun.?
+
 todo:
- 
+
 Run Code Button PREVENT:
     infinite loops
     memory abuse
@@ -19,3 +21,11 @@ authentication
 google ads
 
 
+1. Add PostgreSQL and Prisma.
+2. Create User plus Auth.js tables.
+3. Install Auth.js and Prisma adapter.
+4. Add registration API that hashes password and creates user.
+5. Add login using Auth.js credentials provider.
+6. Protect routes and server actions with session checks.
+7. Tie user progress/drafts to userId.
+8. Add email verification and password reset after the core flow works.
